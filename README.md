@@ -3,8 +3,6 @@
 Access memory using small fixed sized buffers instead of allocating a huge buffer.
 Useful if you are implementing sparse data structures (such as large bitfield).
 
-![travis](https://travis-ci.org/mafintosh/memory-pager.svg?branch=master)
-
 ```
 npm install memory-pager
 ```
@@ -12,11 +10,11 @@ npm install memory-pager
 ## Usage
 
 ``` js
-var pager = require('paged-memory')
+import pager from 'paged-memory'
 
-var pages = pager(1024) // use 1kb per page
+const pages = pager(1024) // use 1kb per page
 
-var page = pages.get(10) // get page #10
+const page = pages.get(10) // get page #10
 
 console.log(page.offset) // 10240
 console.log(page.buffer) // a blank 1kb buffer
@@ -24,11 +22,11 @@ console.log(page.buffer) // a blank 1kb buffer
 
 ## API
 
-#### `var pages = pager(pageSize)`
+#### `const pages = pager(pageSize)`
 
 Create a new pager. `pageSize` defaults to `1024`.
 
-#### `var page = pages.get(pageNumber, [noAllocate])`
+#### `const page = pages.get(pageNumber, [noAllocate])`
 
 Get a page. The page will be allocated at first access.
 
@@ -56,7 +54,7 @@ Mark a page as updated.
 
 Get the last page that was updated.
 
-#### `var buf = pages.toBuffer()`
+#### `const buf = pages.toBuffer()`
 
 Concat all pages allocated pages into a single buffer
 
